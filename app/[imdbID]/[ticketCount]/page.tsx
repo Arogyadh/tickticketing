@@ -253,7 +253,9 @@ const MoviePage: FC<PageProps> = ({ params }) => {
                   <PDFDownloadLink
                     document={
                       <PDFDocument
-                        movie={movie}
+                        poster={movie.Poster}
+                        title={movie.Title}
+                        type={movie.Type}
                         name={formData?.Name}
                         city={formData?.City}
                         country={formData?.Country}
