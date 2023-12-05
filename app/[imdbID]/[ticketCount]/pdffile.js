@@ -11,7 +11,7 @@ import {
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
-    backgroundColor: "#fff",
+    backgroundColor: "#F7F8F9",
     width: "100%",
     height: "100%",
   },
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: "24px",
     fontWeight: "bold",
-    marginLeft: "32px",
+    marginLeft: "20px",
     marginTop: "32px",
     alignItems: "center",
     justifyContent: "center",
@@ -56,7 +56,9 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
-    margin: "20px",
+    marginLeft: "20px",
+    marginBottom: "5px",
+    fontSize: "18px",
     color: "#556987",
   },
   invoiceto: {
@@ -65,6 +67,7 @@ const styles = StyleSheet.create({
   },
   invoiceID: {
     display: "flex",
+    marginRight: "20px",
     marginLeft: "auto",
     fontSize: "18px",
   },
@@ -316,9 +319,101 @@ const PDFDocument = ({
           }}
         />
         {Array.from({ length: ticketCount }).map((_, index) => (
-          <div key={index} style={{ display: "flex" }}>
-            <Text></Text>
-          </div>
+          <>
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "20px",
+                marginRight: "20px",
+                backgroundColor: "#fff",
+                border: "1px solid #ddd",
+                padding: "10px",
+                height: "250px",
+                width: "592px",
+                borderRadius: "8px",
+                marginTop: "40px",
+                marginBottom: "40px",
+              }}
+            >
+              <Image
+                src={poster}
+                alt={title}
+                style={{
+                  height: "122px",
+                  width: "110px",
+                  borderRadius: "10px",
+                }}
+              ></Image>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  paddingLeft: "10px",
+                  paddingTop: "10px",
+                }}
+              >
+                <Text
+                  style={{
+                    display: "flex",
+                    fontWeight: "semibold",
+                    fontSize: "18px",
+                    alignItems: "center",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  {title}
+                </Text>
+                <Text
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "14px",
+                    paddingBottom: "5px",
+                    color: "#556987",
+                  }}
+                >
+                  Sat, Apr 30, 2022 11:30 AM
+                </Text>
+                <Text
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "14px",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  x1
+                </Text>
+                <Text
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "14px",
+                    color: "#556987",
+                    paddingBottom: "5px",
+                  }}
+                >
+                  Total :
+                  <Text style={{ color: "#000", fontWeight: "bold" }}>
+                    $500
+                  </Text>
+                </Text>
+              </div>
+            </div>
+            <div
+              style={{
+                paddingVertical: "20px",
+                display: "flex",
+                flexDirection: "row",
+                marginLeft: "20px",
+                marginRight: "20px",
+                borderBottom: "3px dotted #ddd",
+                height: "1px",
+              }}
+            />
+          </>
         ))}
       </Page>
     </Document>
