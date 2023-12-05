@@ -2,9 +2,7 @@
 import { Button } from "@/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -36,15 +34,14 @@ interface FormData {
   City: string;
   Zip: string;
 }
-
+//get imdbId and ticketCount from url
 const MoviePage: FC<PageProps> = ({ params }) => {
   const [formData, setFormData] = useState<FormData | null>(null);
-
   const { register, handleSubmit } = useForm<FormData>();
-
   const [movie, setMovie] = useState<Movie | null>(null);
   const [ticketCount, setTicketCount] = useState<number>(params.ticketCount);
 
+  //get the name, type etc of the movie through its imdbID
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,7 +60,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     setFormData(data);
-    console.log(formData);
+    // console.log(formData);
   };
   const handleExternalButtonClick = () => {
     handleSubmit(onSubmit)();
@@ -76,6 +73,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
   return (
     <>
       <div className="border border-gray-700 bg-gray-700 h-[1px] pt-[80px]" />
+      {/* Display the current path */}
       <div className="w-full h-full pt-[10px] pb-[10px] pl-[100px] bg-[#1C1C24] ">
         <div className="flex items-center h-full w-full text-[16px] ">
           <span className="text-[#97ABC0]">
@@ -84,6 +82,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
           </span>
         </div>
       </div>
+      {/* Header */}
       <div className="bg-[#1E1E1E] h-screen w-full">
         <div className="flex items-center ml-[100px] pt-[48px] pb-[24px] text-xl text-white font-semibold">
           Order Confirmation
@@ -91,6 +90,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
         <div className=" flex items-center justify-center ml-[100px] border border-gray-700 bg-gray-700 h-[1px] max-w-[90%]" />
         <div className="flex items-start ml-[100px] mt-[48px] h-[516px] max-w-[90%]">
           <div className="bg-[#252D3C] text-white w-[808px] h-full flex justify-between pr-5 rounded-[8px]">
+            {/* Form using react-hook-form */}
             <form
               onSubmit={handleSubmit(onSubmit)}
               className=" pl-[24px] pt-[24px] w-full"
@@ -175,13 +175,10 @@ const MoviePage: FC<PageProps> = ({ params }) => {
                   />
                 </label>
               </div>
-
               <br />
-              <Button className="hidden" type="submit">
-                Confirm & Pay
-              </Button>
             </form>
           </div>
+          {/* 2nd card contents */}
           <div className="flex flex-row ml-auto justify-start  bg-[#252D3C] w-[500px] h-auto items-start text-white rounded-[8px]">
             <Card className=" border-[#252D3C] rounded-[8px]">
               <CardHeader>
@@ -239,36 +236,46 @@ const MoviePage: FC<PageProps> = ({ params }) => {
                     <span className=" flex text-xs mr-2 items-center text-[#97ABC0]">
                       USD
                     </span>
+                    {/* Total cost */}
                     {ticketCount * 500 - ticketCount * 0.13 * 500}
                   </div>
                 </div>
-                <PDFDownloadLink
-                  document={
-                    <PDFDocument
-                      movie={movie}
-                      name={formData?.Name}
-                      city={formData?.City}
-                      country={formData?.Country}
-                      ticketCount={ticketCount}
-                    />
-                  }
-                  fileName="ticket.pdf"
-                  style={{ textDecoration: "none" }} // Optional styling
+                {/* Button outside of form, so using external handler for form submit */}
+                <Button
+                  variant="destructive"
+                  className="flex items-center justify-center bg-[#E14658] w-full h-[48px] rounded-xl "
+                  onClick={handleExternalButtonClick}
                 >
-                  {({ blob, url, loading, error }) =>
-                    loading ? (
-                      "Loading document..."
-                    ) : (
-                      <Button
-                        variant="destructive"
-                        className="flex items-center justify-center bg-[#E14658] w-full h-[48px] rounded-xl "
-                        onClick={handleExternalButtonClick}
-                      >
-                        Confirm & Pay
-                      </Button>
-                    )
-                  }
-                </PDFDownloadLink>
+                  Confirm & Pay
+                </Button>
+                {/* When form data is ready , then download pdf */}
+                {formData && (
+                  <PDFDownloadLink
+                    document={
+                      <PDFDocument
+                        movie={movie}
+                        name={formData?.Name}
+                        city={formData?.City}
+                        country={formData?.Country}
+                        ticketCount={ticketCount}
+                      />
+                    }
+                    fileName="ticket.pdf"
+                  >
+                    {({ loading }) =>
+                      loading ? (
+                        "Loading document..."
+                      ) : (
+                        <Button
+                          variant="destructive"
+                          className="bg-[#E14658] flex items-center jusify-center rounded-[10px]"
+                        >
+                          Download
+                        </Button>
+                      )
+                    }
+                  </PDFDownloadLink>
+                )}
               </CardHeader>
             </Card>
           </div>
