@@ -5,8 +5,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 1. Download the zip file and extract.
 2. Run your choice of editor and open the file.
-3. For Development server : Use "npm run dev"
-4. For Production Build : Use "npm run build" then "npm run start"
+3. Run "npm install" inside the folder
+4. For Development server : Use "npm run dev"
+5. For Production Build : Use "npm run build" then "npm run start"
 
 Technologies used : 
 1. Next.js
