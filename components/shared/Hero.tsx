@@ -32,7 +32,7 @@ const MoviesPage = () => {
   }, []);
 
   return (
-    <div className="pt-[147px]  ml-[100px] grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <div className="pt-[147px] sm:ml-[10px]  lg:ml-[100px] grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {movies.map((movie) => (
         <div key={movie.Title}>
           <Cards

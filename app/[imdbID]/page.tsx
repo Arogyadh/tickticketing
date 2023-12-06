@@ -81,7 +81,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
     // router.push(`${process.env.NEXT_PUBLIC_BASE_PATH}${dynamicURL}`);
   };
   return (
-    <div className="flex pl-[115px] pt-[209px] h-full w-full bg-[#13131A]">
+    <div className="flex  lg:pl-[115px] pt-[209px] h-full w-full bg-[#13131A] flex-col sm:flex-row overflow-x-hidden">
       {/* if movie exists -> render Cards component and pass parameters */}
       {movie && (
         <Cards
@@ -92,7 +92,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
           released={movie.Year}
         />
       )}
-      <div className="flex flex-col ml-auto justify-start  mr-[74px] items-center text-white ">
+      <div className="flex flex-col ml-auto justify-start  mr-[74px] items-center text-white  ">
         <Card className="bg-[#1C1C24]  border-[#1c1c24]">
           <CardHeader>
             <CardTitle className="font-semibold mr-[289px] text-xl pb-5">
@@ -191,7 +191,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
                   USD ${ticketPrice}
                 </div>
               </div>
-              <div className="flex items-center justify-center ml-auto gap-3">
+              <div className="flex items-center justify-center lg:ml-auto gap-3">
                 <Button
                   variant="destructive"
                   className="bg-gray-500 rounded-xl"
@@ -214,7 +214,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
             <br />
             <Button
               variant="destructive"
-              className="flex flex-col items-center justify-center rounded-xl bg-[#E14658]"
+              className="flex flex-col  items-center justify-center rounded-xl bg-[#E14658]"
               onClick={handleButtonClick}
             >
               Checkout for ${totalPrice}

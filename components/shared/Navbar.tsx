@@ -25,7 +25,7 @@ const Navbar = () => {
             viewBox="0 0 30 26"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="flex items-center ml-[100px] h-[80px]"
+            className="flex items-center lg:ml-[100px] h-[80px]"
           >
             <path
               d="M5.05378 8.76115L8.29718 6.89061L6.48677 3.75658H23.5132L0.5 14.0002L15.0027 18.5023L9.5 16.5002L9.94897 17.2388L15.0027 25.99L30 0.0100098H0L5.05378 8.76115Z"
