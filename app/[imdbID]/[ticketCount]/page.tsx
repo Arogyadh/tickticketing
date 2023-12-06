@@ -237,7 +237,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
                       USD
                     </span>
                     {/* Total cost */}
-                    {ticketCount * 500 - ticketCount * 0.13 * 500}
+                    {ticketCount * 500 + ticketCount * 0.13 * 500}
                   </div>
                 </div>
                 {/* Button outside of form, so using external handler for form submit */}
