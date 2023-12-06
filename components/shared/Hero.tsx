@@ -14,7 +14,7 @@ interface Movie {
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-
+  //get movie data from the api by calling with its specific search key, search key is required and there seems to be no default search value so Dogs is taken.
   useEffect(() => {
     const fetchData = async () => {
       try {

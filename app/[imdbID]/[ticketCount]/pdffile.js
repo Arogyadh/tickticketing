@@ -96,6 +96,7 @@ const PDFDocument = ({
   const currentDate = new Date();
 
   return (
+    //pdf generation using react-pdf
     <Document>
       <Page size="A4" style={styles.page}>
         <div style={styles.headingdiv}>

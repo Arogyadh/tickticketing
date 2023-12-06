@@ -16,6 +16,7 @@ import { Button } from "../ui/button";
 const Navbar = () => {
   return (
     <div className="w-full bg-[#1C1C24] flex fixed">
+      {/* Navbar */}
       <NavigationMenu>
         <Link href="/">
           <svg

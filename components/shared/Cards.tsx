@@ -11,6 +11,7 @@ interface CardsProps {
 
 const Cards = ({ movie, src, released, imdbID }: CardsProps) => {
   const router = useRouter();
+  // on clicking card go to the dynamically generated url
   const handleImageClick = () => {
     console.log(imdbID);
     // Dynamically generate the URL based on the imdbID

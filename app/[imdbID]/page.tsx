@@ -25,27 +25,29 @@ interface Movie {
   Type: string;
   Poster: string;
 }
-
+//use params to get imdbID from url
 const MoviePage: FC<PageProps> = ({ params }) => {
   const router = useRouter();
 
   const [ticketCount, setTicketCount] = useState<number>(1);
   const ticketPrice = 500;
   const [totalPrice, setTotalPrice] = useState<number>(ticketPrice);
+
+  //on clicking , decrease the price by 500 and ticket count by 1
   const handleDecrease = () => {
     if (ticketCount > 1) {
       setTicketCount(ticketCount - 1);
       setTotalPrice(totalPrice - 500);
     }
   };
-
+  //on clicking increase the price by 500 and ticket count by 1
   const handleIncrease = () => {
     setTicketCount(ticketCount + 1);
     setTotalPrice((ticketCount + 1) * ticketPrice);
   };
-
+  //used to store movie data
   const [movie, setMovie] = useState<Movie | null>(null);
-
+  //get movie data from the api by calling with its specific imdbID
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -61,6 +63,8 @@ const MoviePage: FC<PageProps> = ({ params }) => {
 
     fetchData();
   }, [params.imdbID]);
+  //if no movie is found , return a message
+
   if (!movie) {
     return <div>No movies found</div>;
   }
@@ -78,6 +82,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
   };
   return (
     <div className="flex pl-[115px] pt-[209px] h-full w-full bg-[#13131A]">
+      {/* if movie exists -> render Cards component and pass parameters */}
       {movie && (
         <Cards
           imdbID={movie.imdbID}
@@ -93,7 +98,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
             <CardTitle className="font-semibold mr-[289px] text-xl pb-5">
               Event Details
             </CardTitle>
-            <div className="border border-[#252D3C] h-[1px] " />
+
             <CardDescription className="pt-5 flex items-center">
               <div
                 className="flex items-center justify-center"
