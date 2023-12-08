@@ -214,7 +214,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
             <br />
             <Button
               variant="destructive"
-              className="flex flex-col  items-center justify-center rounded-xl bg-[#E14658]"
+              className="flex flex-col sm:flex-row  items-center justify-center rounded-xl bg-[#E14658]"
               onClick={handleButtonClick}
             >
               Checkout for ${totalPrice}
