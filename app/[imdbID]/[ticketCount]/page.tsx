@@ -73,7 +73,7 @@ const MoviePage: FC<PageProps> = ({ params }) => {
   return (
     <div className="flex flex-col h-full w-full pt-[80px] bg-[#1E1E1E] lg:pl-[100px] pb-[200px]">
       <div className="border border-gray-700 bg-gray-700 h-[1px]" />
-      <div className="hidden lg:flex  h-[72px] w-full items-start text-[#97ABC0] text-[16px]">
+      <div className="hidden lg:flex  h-[72px] w-full  text-[#97ABC0] text-[16px] items-center  ">
         Home / Explore event / {movie.Title} /
         <span className="flex text-red-500">Checkout</span>
       </div>
