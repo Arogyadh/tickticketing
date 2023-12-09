@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
   },
   invoiceto: {
     display: "flex",
-    fontSize: "18px",
+    fontSize: "14px",
   },
   invoiceID: {
     display: "flex",
     marginRight: "20px",
     marginLeft: "auto",
-    fontSize: "18px",
+    fontSize: "14px",
   },
 });
 
@@ -107,7 +107,7 @@ const PDFDocument = ({
         </div>
         <div style={styles.div2}>
           <Text style={styles.invoiceto}>Invoice to {name}</Text>
-          <Text style={styles.invoiceID}>Invoice ID: 1</Text>
+          <Text style={styles.invoiceID}>Invoice ID: YCCURW-000000</Text>
         </div>
         <div style={styles.div2}>
           <Text style={styles.invoiceto}>{city}</Text>
